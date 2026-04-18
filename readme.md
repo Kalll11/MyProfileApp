@@ -88,7 +88,7 @@ graph TD
     classDef tab fill:#1e1e1e,stroke:#ff9f43,stroke-width:2px,color:#fff;
     
     class Add,Detail,Edit,EditProf screen;
-    class Notes,Fav,Prof tab;
+    class Notes,Fav,Prof tab;```
 
 ## Video Demo
 
