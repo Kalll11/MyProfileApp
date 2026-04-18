@@ -9,7 +9,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.* // Untuk 'by remember' dan 'getValue'
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -19,13 +19,48 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 
-// ============================================================
-// TUGAS PRAKTIKUM: My Profile App
-// Halaman profil lengkap dengan Header, Bio, dan Info List
-// ============================================================
+// IMPORT MANUAL dari package lain agar terbaca
+import com.namakamu.myprofileapp.viewmodel.ProfileViewModel
+import com.namakamu.myprofileapp.data.ProfileUiState
 
-// --- Composable 1: Header profil (foto + nama) ---
+@Composable
+fun ProfileScreen(
+    viewModel: ProfileViewModel,
+    onNavigateToEdit: () -> Unit
+) {
+    val uiState by viewModel.uiState.collectAsState()
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(if (uiState.isDarkMode) Color(0xFF121212) else Color.White)
+            .verticalScroll(rememberScrollState())
+    ) {
+        ProfileHeader(name = uiState.name, title = uiState.title)
+
+        // Fitur Dark Mode Toggle [cite: 1234, 1235]
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text("Dark Mode", color = if (uiState.isDarkMode) Color.White else Color.Black)
+            Switch(checked = uiState.isDarkMode, onCheckedChange = { viewModel.toggleDarkMode(it) })
+        }
+
+        ProfileInfoCard(email = uiState.email, phone = uiState.phone, location = uiState.location)
+
+        Button(
+            onClick = onNavigateToEdit,
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        ) {
+            Text("Ubah Profil")
+        }
+    }
+}
+
 @Composable
 fun ProfileHeader(
     name: String,
@@ -152,76 +187,11 @@ fun ProfileInfoCard(
 }
 
 // --- HALAMAN UTAMA: Menggabungkan semua composable ---
-@Composable
-fun ProfileScreen() {
-    // verticalScroll agar halaman bisa discroll jika konten panjang
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-    ) {
-        // 1. Header dengan foto dan nama
-        ProfileHeader(
-            name = "Nama Kamu",
-            title = "Mahasiswa Teknik Informatika"
-        )
 
-        Spacer(modifier = Modifier.height(8.dp))
-
-        // 2. Bio singkat
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-        ) {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text(
-                    text = "Tentang Saya",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = "Mahasiswa aktif Teknik Informatika ITERA yang " +
-                            "tertarik pada pengembangan aplikasi mobile. " +
-                            "Sedang belajar Kotlin Multiplatform dan Compose.",
-                    fontSize = 14.sp,
-                    color = Color.DarkGray,
-                    lineHeight = 22.sp
-                )
-            }
-        }
-
-        // 3. Informasi kontak menggunakan ProfileInfoCard
-        ProfileInfoCard(
-            email = "namakamu@student.itera.ac.id",
-            phone = "+62 812-3456-7890",
-            location = "Lampung Selatan, Indonesia"
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        // 4. Tombol Edit Profil (menggunakan Button)
-        Button(
-            onClick = { /* navigasi ke halaman edit */ },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-                .height(50.dp)
-        ) {
-            Icon(Icons.Default.Edit, contentDescription = null)
-            Spacer(modifier = Modifier.width(8.dp))
-            Text("Edit Profil", fontWeight = FontWeight.Bold)
-        }
-
-        Spacer(modifier = Modifier.height(24.dp))
-    }
-}
 
 // --- PREVIEW ---
-@Preview(showBackground = true)
-@Composable
-fun ProfileScreenPreview() {
-    ProfileScreen()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun ProfileScreenPreview() {
+//    ProfileScreen()
+//}
