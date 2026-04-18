@@ -90,6 +90,6 @@ graph TD
     class Add,Detail,Edit,EditProf screen;
     class Notes,Fav,Prof tab;
 
-**## Video Demo**
+## Video Demo
 
 https://github.com/user-attachments/assets/0d9a9772-2300-48b8-acf0-7aa12960f681
