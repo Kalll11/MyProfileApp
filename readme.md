@@ -39,8 +39,10 @@ CREATE TABLE Note (
     content TEXT NOT NULL,
     isFavorite INTEGER AS Boolean NOT NULL DEFAULT 0,
     created_at INTEGER NOT NULL
-);
+);```
+
+---
 
 ## 🎥 Video Demo Aplikasi
-https://github.com/user-attachments/assets/9e04cfee-f223-4508-a156-3616a1225120
 
+https://github.com/user-attachments/assets/9e04cfee-f223-4508-a156-3616a1225120
