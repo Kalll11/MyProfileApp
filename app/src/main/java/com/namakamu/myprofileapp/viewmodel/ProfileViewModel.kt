@@ -18,10 +18,11 @@ class ProfileViewModel : ViewModel() {
         _uiState.update { it.copy(name = newName, bio = newBio) }
     }
 
-    fun saveProfile(newName: String, newBio: String, newEmail: String, newPhone: String) {
+    fun saveProfile(newName: String, newTitle: String, newBio: String, newEmail: String, newPhone: String) {
         _uiState.update {
             it.copy(
                 name = newName,
+                title = newTitle,
                 bio = newBio,
                 email = newEmail,
                 phone = newPhone

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    id("app.cash.sqldelight") version "2.3.2"
 }
 
 android {
@@ -62,4 +63,17 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     implementation("androidx.compose.material:material-icons-extended")
     implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation("app.cash.sqldelight:android-driver:2.0.1")
+    implementation("app.cash.sqldelight:coroutines-extensions:2.0.1")
+    implementation("com.russhwolf:multiplatform-settings:1.1.1")
+    implementation("com.russhwolf:multiplatform-settings-coroutines:1.1.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+}
+
+sqldelight {
+    databases {
+        create("NotesDatabase") {
+            packageName.set("com.namakamu.myprofileapp.db")
+        }
+    }
 }

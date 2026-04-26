@@ -14,8 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.namakamu.myprofileapp.data.Note
 import com.namakamu.myprofileapp.viewmodel.NoteViewModel
+import com.namakamu.myprofileapp.db.db.Note
 
 // ==========================================
 // 1. DAFTAR CATATAN (TAB NOTES)
@@ -36,7 +36,7 @@ fun NoteListScreen(
         } else {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(notes) { note ->
-                    NoteCard(note = note, viewModel = viewModel, onClick = { onNavigateToDetail(note.id) })
+                    NoteCard(note = note, viewModel = viewModel, onClick = { onNavigateToDetail(note.id.toInt()) })
                 }
             }
         }
@@ -64,7 +64,7 @@ fun FavoritesScreen(
         } else {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 items(favoriteNotes) { note ->
-                    NoteCard(note = note, viewModel = viewModel, onClick = { onNavigateToDetail(note.id) })
+                    NoteCard(note = note, viewModel = viewModel, onClick = { onNavigateToDetail(note.id.toInt()) })
                 }
             }
         }
@@ -90,7 +90,7 @@ fun NoteCard(note: Note, viewModel: NoteViewModel, onClick: () -> Unit) {
                 Text(note.content, color = Color.Gray, maxLines = 1)
             }
             // Tombol Bintang Favorit
-            IconButton(onClick = { viewModel.toggleFavorite(note.id) }) {
+            IconButton(onClick = { viewModel.toggleFavorite(note.id.toInt()) }) {
                 Icon(
                     imageVector = if (note.isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                     contentDescription = "Favorite",

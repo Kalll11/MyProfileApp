@@ -18,6 +18,7 @@ fun EditProfileScreen(
 
     // State lokal untuk form
     var name by remember { mutableStateOf(uiState.name) }
+    var title by remember { mutableStateOf(uiState.title) } // Tambahkan state untuk Title
     var bio by remember { mutableStateOf(uiState.bio) }
     var email by remember { mutableStateOf(uiState.email) }
     var phone by remember { mutableStateOf(uiState.phone) }
@@ -26,13 +27,18 @@ fun EditProfileScreen(
         Text("Edit Profil", style = MaterialTheme.typography.headlineMedium)
 
         OutlinedTextField(value = name, onValueChange = { name = it }, label = { Text("Nama") }, modifier = Modifier.fillMaxWidth())
+
+        // --- TAMBAHKAN TEXTFIELD INI ---
+        OutlinedTextField(value = title, onValueChange = { title = it }, label = { Text("Status / Jabatan") }, modifier = Modifier.fillMaxWidth())
+
         OutlinedTextField(value = bio, onValueChange = { bio = it }, label = { Text("Bio") }, modifier = Modifier.fillMaxWidth())
         OutlinedTextField(value = email, onValueChange = { email = it }, label = { Text("Email") }, modifier = Modifier.fillMaxWidth())
         OutlinedTextField(value = phone, onValueChange = { phone = it }, label = { Text("Telepon") }, modifier = Modifier.fillMaxWidth())
 
         Button(
             onClick = {
-                viewModel.saveProfile(name, bio, email, phone)
+                // Pastikan parameter title ikut dikirim ke viewModel
+                viewModel.saveProfile(name, title, bio, email, phone)
                 onNavigateBack()
             },
             modifier = Modifier.fillMaxWidth().padding(top = 16.dp)
