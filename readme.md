@@ -16,7 +16,7 @@ Branch `week-7` ini berisi pengembangan fitur Catatan (Notes) pada MyProfileApp 
 Tabel berikut mendemonstrasikan pemenuhan 6 poin utama fitur aplikasi beserta bukti visualnya:
 
 | No. | Fitur | Bukti Screenshot |
-|:---:|:---|:---|:---:|
+|:---:|:---|:---|
 | **1** | **Daftar Catatan** | <img width="1919" height="1079" alt="Screenshot 2026-04-26 150405" src="https://github.com/user-attachments/assets/688f5d84-aaca-466e-b974-08aa1766424e" /> |
 | **2** | **Formulir Tambah Catatan** | <img width="1919" height="1079" alt="Screenshot 2026-04-26 150843" src="https://github.com/user-attachments/assets/89bcf63d-85dd-4645-a170-f560af31df52" /> |
 | **3** | **Hasil Setelah Menambah Catatan** | <img width="1919" height="1079" alt="Screenshot 2026-04-26 151117" src="https://github.com/user-attachments/assets/838ec591-4492-4d02-9e23-01b3cb984338" /> |
@@ -26,6 +26,7 @@ Tabel berikut mendemonstrasikan pemenuhan 6 poin utama fitur aplikasi beserta bu
 | **7** | **Halaman Profile** | <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/a7074c9d-2725-4163-9c50-11814a3ce175" /> |
 | **8** | **Hapus Catatan** | <img width="1919" height="1079" alt="Screenshot 2026-04-26 154717" src="https://github.com/user-attachments/assets/f02ddde5-cf5e-4942-8698-4ee8b0891973" /> |
 | **9** | **Hasil Setelah Menghapus Catatan** | <img width="1919" height="1079" alt="Screenshot 2026-04-26 154922" src="https://github.com/user-attachments/assets/9ac5f96e-3d7f-4596-91d7-c8c1b48b7340" /> |
+| **10** | **Fitur Search** | <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/599ffc96-cc4d-4f20-8f74-0002c453edb0" /> |
 
 ---
 
