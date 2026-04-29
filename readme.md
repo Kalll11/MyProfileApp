@@ -1,4 +1,4 @@
-# My Profile App
+# Notes App
 
 ## 📌 Deskripsi
 Aplikasi sederhana berbasis Jetpack Compose yang dibuat untuk memenuhi tugas praktikum Pertemuan 3 mata kuliah Pengembangan Aplikasi Mobile.
